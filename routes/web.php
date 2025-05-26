@@ -11,7 +11,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('ideas', [IdeasController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('ideas');;
+    ->middleware(['auth', 'verified'])->name('ideas');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
