@@ -14,6 +14,10 @@ class Vote extends Model
         'icon',
     ];
 
+    protected $casts = [
+        'vote_type'  => 'enum',
+    ];
+
 
     public function user(): BelongsTo
     {

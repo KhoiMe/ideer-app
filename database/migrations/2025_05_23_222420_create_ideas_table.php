@@ -15,15 +15,20 @@ return new class extends Migration
             $table->id();
             $table->string('idea_title');
             $table->string('idea_explanation');
-            $table->integer('idea_upvote_count');
-            $table->integer('idea_downvote_count');
-            $table->integer('totalvote_count');
             /* FK */
-           $table->foreignId('user_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
+        });
+
+        Schema::create('idea_votes', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('idea_id')->constrained()->onDelete('cascade');
+            $table->integer('count');
+            $table->timestamps();
+            $table->primary(['user_id', 'idea_id']);
         });
     }
 
@@ -33,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('ideas');
+        Schema::dropIfExists('idea_votes');
     }
 };

@@ -3,17 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
+// controllers
+use App\Http\Controllers\IdeasController;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+/* Route::view('dashboard', 'dashboard') */
+/*     ->middleware(['auth', 'verified']) */
+/*     ->name('dashboard'); */
 
-Route::view('ideas', 'ideas')
-    ->middleware(['auth', 'verified'])
-    ->name('ideas');
+Route::get('ideas', [IdeasController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('ideas');;
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
