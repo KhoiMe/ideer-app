@@ -10,10 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-/* Route::view('dashboard', 'dashboard') */
-/*     ->middleware(['auth', 'verified']) */
-/*     ->name('dashboard'); */
-
 Route::get('ideas', [IdeasController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('ideas');;
 
