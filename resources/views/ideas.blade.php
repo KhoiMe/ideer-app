@@ -66,7 +66,7 @@ new class extends Component {
 
     <div class ="mt-6 grid grid-cols-2 gap-2">
     <div>
-        <h2>Hot Questions</h2>
+        <h2>Hot Ideas</h2>
         @foreach (Idea::getSortedIdeas() as $idea)
             <li>
                 <livewire:ideas-card
@@ -79,7 +79,7 @@ new class extends Component {
     </div>
 
     <div>
-        <h2>Latest Questions</h2>
+        <h2>Latest Ideas</h2>
         @foreach (Idea::getLatestIdeas() as $idea)
             <li>
                 <livewire:ideas-card
