@@ -38,8 +38,4 @@ class Idea extends Model
             ->groupBy('ideas.id')
             ->first()->votes;
     }
-
-
-    // Relationship with user
-
 }
