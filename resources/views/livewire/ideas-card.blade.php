@@ -27,6 +27,21 @@ new class extends Component  {
         ]);
         $this->voteCount = $idea->voteCount();
     }
+
+    public function deleteIdea(Idea $idea)
+    {
+         $idea = DB::table('ideas')->where('id', $idea->id)->first();
+
+        if (!$idea) return;
+
+        if ($idea->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        DB::table('ideas')->where('id', $idea->id)->delete();
+
+        $this->redirect('ideas');
+    }
 }
 
 ?>
@@ -51,6 +66,11 @@ new class extends Component  {
             <flux:button wire:click="downvote({{ $idea->id }})" variant="ghost" size="sm">
                 <flux:icon.hand-thumb-down name="hand-thumb-down" variant="outline" class="size-4 text-zinc-400"></flux:icon>
             </flux:button>
+            @if (Auth::user()->id === $idea->user->id)
+            <flux:button wire:click="deleteIdea({{ $idea->id }})" variant="ghost" size="sm">
+                <flux:icon.trash name="trash" variant="outline" class="size-4 text-zinc-400"></flux:icon>
+            </flux:button>
+            @endif
         </div>
     </div>
 </div>

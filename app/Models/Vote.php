@@ -79,46 +79,4 @@ class Vote extends Model
     {
         return $this->vote_type === 'downvote';
     }
-
-    /**
-     * Boot method to handle model events.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Update idea vote counts when vote is created
-        static::created(function ($vote) {
-            $vote->updateIdeaVoteCounts();
-        });
-
-        // Update idea vote counts when vote is updated
-        static::updated(function ($vote) {
-            $vote->updateIdeaVoteCounts();
-        });
-
-        // Update idea vote counts when vote is deleted
-        static::deleted(function ($vote) {
-            $vote->updateIdeaVoteCounts();
-        });
-    }
-
-    /**
-     * Update the vote counts on the associated idea.
-     */
-    public function updateIdeaVoteCounts(): void
-    {
-        $idea = $this->idea;
-
-        if ($idea) {
-            $upvotes = $idea->votes()->upvotes()->count();
-            $downvotes = $idea->votes()->downvotes()->count();
-
-            $idea->update([
-                'idea_upvote_count' => $upvotes,
-                'idea_downvote_count' => $downvotes,
-                'totalvote_count' => $upvotes - $downvotes
-            ]);
-        }
-    }
 }

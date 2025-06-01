@@ -41,7 +41,6 @@ class Idea extends Model
             ->get();
     }
 
-
     public function voteCount(): int
     {
         return self::query()
