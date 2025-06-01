@@ -12,6 +12,9 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        outDir: 'public/build', // Ensure this is set correctly
+    },
     server: {
         cors: true,
     },
