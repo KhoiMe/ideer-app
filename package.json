@@ -6,9 +6,6 @@
         "dev": "vite",
         "postinstall": "npm run build"
     },
-    "engines": {
-        "node": "22.x"
-    },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.7",
         "autoprefixer": "^10.4.20",
