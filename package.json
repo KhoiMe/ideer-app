@@ -4,10 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "heroku-postbuild": "npm run build"
-    },
-    "engines": {
-        "node": "24.x"
+        "postinstall": "npm run build"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.7",
