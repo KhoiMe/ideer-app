@@ -63,13 +63,32 @@ new class extends Component {
         </form>
     @endvolt
     </div>
-    @foreach (Idea::getSortedIdeas() as $idea)
-        <li>
-            <livewire:ideas-card
-                :idea="$idea"
-                :vote-count="$idea->votes"
-                :key="$idea->id"
-            />
-        </li>
-    @endforeach
+
+    <div class ="mt-6 grid grid-cols-2 gap-2">
+    <div>
+        <h2>Hot Questions</h2>
+        @foreach (Idea::getSortedIdeas() as $idea)
+            <li>
+                <livewire:ideas-card
+                    :idea="$idea"
+                    :vote-count="$idea->votes"
+                    :key="$idea->id"
+                />
+            </li>
+        @endforeach
+    </div>
+
+    <div>
+        <h2>Latest Questions</h2>
+        @foreach (Idea::getLatestIdeas() as $idea)
+            <li>
+                <livewire:ideas-card
+                    :idea="$idea"
+                    :vote-count="$idea->votes"
+                    :key="$idea->id"
+                />
+            </li>
+        @endforeach
+    </div>
+    </div>
 </x-layouts.app>

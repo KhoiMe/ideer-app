@@ -29,6 +29,19 @@ class Idea extends Model
             ->get();
     }
 
+    public static function getLatestIdeas()
+    {
+        return self::query()
+            ->leftJoin('idea_votes', 'ideas.id', '=', 'idea_votes.idea_id')
+            ->selectRaw('ideas.*, coalesce(sum(idea_votes.count), 0) as votes')
+            ->groupBy('ideas.id')
+            ->limit(1000)
+            ->with('user')
+            ->latest()
+            ->get();
+    }
+
+
     public function voteCount(): int
     {
         return self::query()
