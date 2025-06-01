@@ -24,7 +24,7 @@
                 {{ __('Holy Grail') }}
                 </flux:navlist.item>
 
-                <flux:navlist.item icon="code-bracket" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
+                <flux:navlist.item icon="code-bracket" href="https://github.com/khoime" target="_blank">
                 {{ __('Creators') }}
                 </flux:navlist.item>
             </flux:navlist>

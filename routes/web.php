@@ -10,9 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::delete('/ideas/{id}', [IdeasController::class, 'deleteIdea'])
-    ->name('ideas.delete');
-
 Route::get('ideas', [IdeasController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('ideas');
 

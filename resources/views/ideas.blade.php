@@ -55,10 +55,10 @@ new class extends Component {
                 <flux:button
                     type="submit"
                     variant="primary"
-                    icon="plus"
+                    icon="light-bulb"
                     class="cursor-pointer"
                 >
-                    Post to ideer
+                    Post to Ideer
                 </flux:button>
         </form>
     @endvolt
@@ -66,7 +66,8 @@ new class extends Component {
 
     <div class ="mt-6 grid grid-cols-2 gap-2">
     <div>
-        <h2>Hot Ideas</h2>
+        <flux:heading size="xl">Hot Ideas</flux:heading2>
+        <flux:separator />
         @foreach (Idea::getSortedIdeas() as $idea)
             <li>
                 <livewire:ideas-card
@@ -79,7 +80,8 @@ new class extends Component {
     </div>
 
     <div>
-        <h2>Latest Ideas</h2>
+        <flux:heading size="xl">Latest Ideas</flux:heading>
+        <flux:separator />
         @foreach (Idea::getLatestIdeas() as $idea)
             <li>
                 <livewire:ideas-card
