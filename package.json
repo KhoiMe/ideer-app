@@ -7,7 +7,7 @@
         "heroku-postbuild": "npm run build"
     },
     "engines": {
-        "node": "22.x"
+        "node": "18.x"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.7",
