@@ -3,8 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "npm run build",
-        "heroku-postbuild": "vite build"
+        "build": "vite build",
+        "heroku-postbuild": "npm run build"
     },
     "engines": {
         "node": "22.x"
