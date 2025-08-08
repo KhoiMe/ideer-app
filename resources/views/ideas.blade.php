@@ -30,39 +30,10 @@ new class extends Component {
 }
 ?>
 <x-layouts.app>
-    <h2>Ideas</h2>
-    @volt
-    <div>
-        <form wire:submit="submitIdea">
-                <flux:input
-                    wire:model="title"
-                    placeholder="An inspiring title"
-                    class="mt-2 mb-2"
-                />
-                <flux:text class="mt-2 mb-2" color="red">
-                    @error('title') {{ $message }} @enderror
-                </flux:text>
-
-                <flux:textarea
-                    wire:model="content"
-                    placeholder="Make your explanation standout"
-                    class="mt-2 mb-2"
-                />
-                <flux:text class="mt-2 mb-2" color="red">
-                    @error('content') {{ $message }} @enderror
-                </flux:text>
-
-                <flux:button
-                    type="submit"
-                    variant="primary"
-                    icon="light-bulb"
-                    class="cursor-pointer"
-                >
-                    Post to Ideer
-                </flux:button>
-        </form>
-    @endvolt
-    </div>
+<div>
+<flux:heading size="xl">Ideas</flux:heading2>
+<livewire:ideas-form />
+</div>
 
     <div class ="mt-6 grid grid-cols-2 gap-2">
     <div>
