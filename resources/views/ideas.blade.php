@@ -4,30 +4,6 @@ use Livewire\Volt\Component;
 use function Livewire\Volt\{state};
 
 $ideas = Idea::with('user')->get();
-
-new class extends Component {
-    public $title = '';
-    public $content = '';
-
-    public function submitIdea()
-    {
-        $this->validate([
-            'title' => 'required|min:10|max:420',
-            'content' => 'required|min:10|max:420',
-        ]);
-
-        $user = auth()->user()->ideas()->create([
-            'idea_title' => $this->title,
-            'idea_explanation' => $this->content,
-        ]);
-
-        // let the frontEnd Update
-        $this->title = '';
-        $this->content = '';
-        $this->redirect('ideas');
-
-    }
-}
 ?>
 <x-layouts.app>
 <div>

@@ -2,7 +2,6 @@
 
 use App\Models\Idea;
 use App\Models\User;
-use Livewire\Livewire;
 use Livewire\Volt\Volt;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
